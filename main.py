@@ -3,11 +3,10 @@ from tkinter import ttk
 
 url_text = tk.StringVar()
 
-
 async def download_video_ui():
     from videoyt import download_video
 
-    await download_video(url_text.get(), message_center, message_center)
+    await download_video(url_text.get(), message_show, message_close)
 
 
 button_load = tk.Button(frame, text="Descargar", command=download_video_ui)

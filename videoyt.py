@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def none(*args): pass
 
-async def download_video(url: str, process: function = none, error: function = none):
+async def download_video(url: str, process: function = none):
     destinatation = "videos"
 
     if op.exists(f"./{destinatation}"):
@@ -26,6 +26,8 @@ async def download_video(url: str, process: function = none, error: function = n
         
         await yt_ins.streams.get_highest_resolution() \
               .download(output_path=destinatation, filename=f"{title}.mp4")
+        
+        process("Video descargado")
 
     except:
-        error("No se pudo descargar el video")
+        process("No se pudo descargar el video")
